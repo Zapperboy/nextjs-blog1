@@ -20,10 +20,10 @@ export default function Home({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>AWE my name is zack</p>
+        <p>Hii my name is zack</p>
         <p>
-          see me on
-          <a href="https://instagram.com"> instagram</a>.
+          See Me On
+          <a href="https://www.instagram.com/_ruben_143/"> instagram</a>.
         </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
