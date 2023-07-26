@@ -7,7 +7,7 @@ Hello my name is zack
 
 I am...
 
+- You'r man
 - Gamer
-- Playboy
 
 I am the best!
