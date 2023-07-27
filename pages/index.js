@@ -40,6 +40,7 @@ export default function Home({ allPostsData }) {
           ))}
         </ul>
       </section>
+      <Link href={`/newpage`}>Play</Link>
     </Layout>
   );
 }
