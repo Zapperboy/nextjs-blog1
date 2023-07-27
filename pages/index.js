@@ -20,7 +20,7 @@ export default function Home({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Hii my name is zack</p>
+        <p>Hii my name is Ruben</p>
         <p>
           See Me On
           <a href="https://www.instagram.com/_ruben_143/"> instagram</a>.
