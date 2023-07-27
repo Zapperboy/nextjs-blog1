@@ -40,7 +40,7 @@ export default function Home({ allPostsData }) {
           ))}
         </ul>
       </section>
-      <Link href={`/newpage`}>Play</Link>
+      <Link href={`/newpage`}>Play a quick game</Link>
     </Layout>
   );
 }

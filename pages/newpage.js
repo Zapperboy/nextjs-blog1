@@ -1,11 +1,13 @@
+import React from 'react';
 import { useState } from 'react';
+import Button from '@mui/material/Button';
 import Layout from '../components/layout';
 
 function Square({ value, onSquareClick }) {
   return (
-    <button className="square" onClick={onSquareClick}>
+    <Button className="square" variant="contained" color="primary" onClick={onSquareClick}>
       {value}
-    </button>
+    </Button>
   );
 }
 
@@ -78,7 +80,7 @@ export default function Game() {
     }
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        <Button onClick={() => jumpTo(move)}>{description}</Button>
       </li>
     );
   });
