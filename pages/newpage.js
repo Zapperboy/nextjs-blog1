@@ -10,32 +10,33 @@ function Square({ value, onSquareClick }) {
   
   return (
     <Button
-    variant="contained"
-    onClick={onSquareClick}
-    sx={{
-      width: '125px', // Adjust the width as needed
-      height: '125px', // Adjust the height as needed
-      fontSize: '100px',
-      textAlign: 'center',
-      lineHeight: '125px',
-      border: 'none', // Remove the border
-      cursor: 'pointer',
-      background: '#ffffff', // Set a custom background color
-      color: 'black', // Text color
-      borderRadius: '15px', // Rounded corners
-      textTransform: 'uppercase', // Uppercase text
-      fontWeight: 'bold', // Bold font weight
-      boxShadow: '0 4px 8px rgba(33, 150, 243, 0.2)', // Add a subtle shadow
-      transition: 'transform 0.3s, box-shadow 0.3s, background 0.3s', // Smooth transitions on hover for scale, shadow, and background
-      '&:hover': {
-        background: '#21cbf3', // Custom background color on hover
-        transform: 'scale(1.05)', // Scale up on hover
-        boxShadow: '0 6px 12px rgba(33, 150, 243, 0.3)', // Increase shadow on hover
-      },
-    }}
-  >
-      {value}
-    </Button>
+  variant="contained"
+  onClick={onSquareClick}
+  sx={{
+    width: '125px', // Adjust the width as needed
+    height: '125px', // Adjust the height as needed
+    fontSize: '100px',
+    textAlign: 'center',
+    lineHeight: '125px',
+    border: 'none', // Remove the border
+    cursor: 'pointer',
+    background: '#ffffff', // Set a custom background color
+    color: 'black', // Text color
+    borderRadius: '15px', // Rounded corners
+    textTransform: 'uppercase', // Uppercase text
+    fontWeight: 'bold', // Bold font weight
+    boxShadow: '0 4px 8px rgba(33, 150, 243, 0.2)', // Add a subtle shadow
+    outline: '2px solid black', // Add a black outline
+    transition: 'transform 0.3s, box-shadow 0.3s, background 0.3s', // Smooth transitions on hover for scale, shadow, and background
+    '&:hover': {
+      background: '#21cbf3', // Custom background color on hover
+      transform: 'scale(1.05)', // Scale up on hover
+      boxShadow: '0 6px 12px rgba(33, 150, 243, 0.3)', // Increase shadow on hover
+    },
+  }}
+>
+  {value}
+</Button>
   );
 }
 
