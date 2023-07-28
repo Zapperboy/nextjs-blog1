@@ -13,9 +13,10 @@ function Square({ value, onSquareClick }) {
   variant="contained"
   onClick={onSquareClick}
   sx={{
-    width: '125px', // Adjust the width as needed
-    height: '125px', // Adjust the height as needed
-    fontSize: '100px',
+    m: 2,
+    width: {xs:80, md:125}, // Fixed width for both mobile and desktop
+    height: {xs:80, md:125}, // Fixed height for both mobile and desktop
+    fontSize: '100px', // Fixed font size for both mobile and desktop
     textAlign: 'center',
     lineHeight: '125px',
     border: 'none', // Remove the border
