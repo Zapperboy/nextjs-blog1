@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import Layout from '../components/layout';
+import Confetti from 'react-confetti';
 
 function Square({ value, onSquareClick }) {
   const squareStyle = {
-   
+    // Your square style goes here (if you have any specific style)
   };
+  
   return (
     <Button
     variant="contained"
     onClick={onSquareClick}
     sx={{
       width: '125px', // Adjust the width as needed
-      height: '125px', // Adjust the height as neded
+      height: '125px', // Adjust the height as needed
       fontSize: '100px',
       textAlign: 'center',
       lineHeight: '125px',
@@ -32,12 +34,27 @@ function Square({ value, onSquareClick }) {
       },
     }}
   >
-    {value}
-  </Button>
+      {value}
+    </Button>
   );
 }
 
-function Board({ xIsNext, squares, onPlay }) {
+function Board({ xIsNext, squares, onPlay, setCurrentMove, setHistory }) {
+  const [isCoAf, setIsCoAf] = useState(false);
+  const winner = calculateWinner(squares);
+
+  useEffect(() => {
+    if (winner) {
+      setIsCoAf(true);
+    }
+  }, [winner]);
+
+  const handleReset = () => {
+    setCurrentMove(0);
+    setHistory([Array(9).fill(null)]);
+    setIsCoAf(false);
+  };
+  
   function handleClick(i) {
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -51,7 +68,6 @@ function Board({ xIsNext, squares, onPlay }) {
     onPlay(nextSquares);
   }
 
-  const winner = calculateWinner(squares);
   let status;
   if (winner) {
     status = 'Winner: ' + winner;
@@ -61,6 +77,7 @@ function Board({ xIsNext, squares, onPlay }) {
 
   return (
     <Layout>
+      {isCoAf && <Confetti style={{ width: '100%' }} />}
       <div className="status">{status}</div>
       <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
@@ -77,6 +94,11 @@ function Board({ xIsNext, squares, onPlay }) {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
+      {winner && (
+        <Button variant="contained" onClick={handleReset} style={{ marginTop: '10px' }}>
+          Reset Game
+        </Button>
+      )}
     </Layout>
   );
 }
@@ -93,9 +115,9 @@ export default function Game() {
     setCurrentMove(nextHistory.length - 1);
   }
 
-  function jumpTo(nextMove) {
+  const jumpTo = (nextMove) => {
     setCurrentMove(nextMove);
-  }
+  };
 
   const moves = history.map((squares, move) => {
     let description;
@@ -109,12 +131,12 @@ export default function Game() {
         <Button onClick={() => jumpTo(move)}>{description}</Button>
       </li>
     );
-  }); 
+  });
 
   return (
     <div className="game" style={{ maxHeight: '1000px', overflowY: 'auto' }}>
       <div className="game-board" sx={{ width: '400px', height: '400px', margin: 'auto' }}>
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} setCurrentMove={setCurrentMove} setHistory={setHistory} />
       </div>
       <div className="game-info">
         <ol>{moves}</ol>
@@ -142,3 +164,4 @@ function calculateWinner(squares) {
   }
   return null;
 }
+
